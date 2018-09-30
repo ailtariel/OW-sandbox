@@ -11,7 +11,7 @@
 <ul>
 <li>1、可选择当前版本所有地图。</li>
 <li>2、使用高清模式，可以在放大后获得更高清晰度的局部地图。</li>
-<li>3、github版本未附带高清资源包。请访问 <a href="https://pan.baidu.com/s/1xHyNEXuL92McUDnP08P5hw" target="_blank">百度网盘</a>下载。提取码： <strong>xlpb</strong> 下载后合并到plain文件夹。</li>
+<li>3、github版本未附带高清资源包。请访问 <a href="https://pan.baidu.com/s/1xHyNEXuL92McUDnP08P5hw" target="_blank">百度网盘</a>下载,下载后合并到plain文件夹。提取码： <strong>xlpb</strong></li>
 </ul>
 
 <h4>英雄：</h4>
