@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>OW SandBox</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<!-- juicer，模板引擎 -->
+	<script src="js/juicer-min.js"></script>
+	<script src="js/konva.min.js"></script>
+	<script src="js/draw.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">		
+		<div class="collapse navbar-collapse" id="nav">
+			<ul class="nav navbar-nav">
+				<li role="presentation" class="dropdown">
+					<a id="modeSelect" data-map="" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">低清模式<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:setMode('low', '低清模式')">低清模式</a></li>
+						<li><a href="javascript:setMode('high', '高清模式')">高清模式</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li role="presentation" class="dropdown" id="map_list">
+					<a id="mapPicker" data-map="" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">选择地图<span class="caret"></span></a>
+					<ul class="dropdown-menu">						
+						<!-- <li class="title">混合图</li> -->
+						<li><a href="javascript:initMap('hollywood', '好莱坞')">好莱坞</a></li>
+						<li><a href="javascript:initMap('numbani', '努巴尼')">努巴尼</a></li>
+						<li><a href="javascript:initMap('kingsrow', '国王大道')">国王大道</a></li>
+						<li><a href="javascript:initMap('eichenwalde', '艾辛瓦尔德')">艾辛瓦尔德</a></li>
+						<li><a href="javascript:initMap('blizzardworld' ,'暴雪世界')">暴雪世界</a></li>
+						<li><a href="javascript:initMap('rialto' ,'里阿尔托')">里阿尔托</a></li>
+						<li class="divider"></li>
+						<!-- <li class="title">纯推车图</li> -->
+						<li><a href="javascript:initMap('watchpoint' ,'直布罗陀')">直布罗陀</a></li>
+						<li><a href="javascript:initMap('junkertown', '渣客镇')">渣客镇</a></li>
+						<li><a href="javascript:initMap('dorado', '多拉多')">多拉多</a></li>
+						<li><a href="javascript:initMap('route66', '66号公路')">66号公路</a></li>
+						<li class="divider"></li>
+						<!-- <li class="title">占领要点图</li> -->
+						<li><a href="javascript:initMap('hana', '花村')">花村</a></li>
+						<li><a href="javascript:initMap('volskaya', '沃斯卡亚工业区')">沃斯卡亚工业区</a></li>
+						<li><a href="javascript:initMap('horizon', '月球基地')">月球基地</a></li>
+						<li><a href="javascript:initMap('anubis', '阿努比斯神殿')">阿努比斯神殿</a></li>
+						<li class="divider"></li>
+						<!-- <li class="title">控制图</li> -->
+						<li><a href="javascript:initMap('ilios_vertical', '伊利奥斯')">伊利奥斯</a></li>
+						<li><a href="javascript:initMap('lijiangtower_vertical', '漓江塔')">漓江塔</a></li>
+						<li><a href="javascript:initMap('oasis_vertical', '绿洲城')">绿洲城</a></li>
+						<li><a href="javascript:initMap('nepal_vertical', '尼泊尔')">尼泊尔</a></li>						
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav" id="heroes">
+				<script type="text/template" id="tpl_heroes">
+				{@each heroes as h}
+				<li><img class="drag" draggable="true" ondragend="dragEnd(event)" src="heroes/${h}.png" /></li>
+				{@/each}
+				</script>
+			</ul>
+		</div>
+	</div>
+</nav>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="container-fluid">		
+		<div class="collapse navbar-collapse" id="nav">			
+			<ul class="nav navbar-nav">
+				<li role="presentation" class="dropdown" id="pencil">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">画笔<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:setPencil('arrow', '箭头');">箭头</a></li>
+						<li><a href="javascript:setPencil('line', '自由绘制');">自由绘制</a></li>
+						<li><a href="javascript:setPencil('rect', '矩形');">矩形</a></li>
+						<li><a href="javascript:setPencil('arc', '圆');">圆</a></li>
+					</ul>
+				</li>
+				<li role="presentation" class="dropdown" id="colorpick">
+					<a class="dropdown-toggle" data-toggle="dropdown" id="colorpickBtn" href="#" role="button" aria-haspopup="true" aria-expanded="false">颜色<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:setColor('#ff5656');"><span class="colorcard" style="background-color: #ff5656;"></span>#ff5656</a></li>
+						<li><a href="javascript:setColor('#31d1ff');"><span class="colorcard" style="background-color: #31d1ff;"></span>#31d1ff</a></li>
+						<li><a href="javascript:setColor('#50b432');"><span class="colorcard" style="background-color: #50b432;"></span>#50b432</a></li>
+						<li><a href="javascript:setColor('#dddf00');"><span class="colorcard" style="background-color: #dddf00;"></span>#dddf00</a></li>
+						<li><a href="javascript:setColor('#fff');"><span class="colorcard" style="background-color: #fff; border: 1px solid #000;"></span>#ffffff</a></li>
+						<li><a href="javascript:setColor('#000');"><span class="colorcard" style="background-color: #000;"></span>#000000</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="navbar-form form-group item navbar-left">
+						<div class="input-group">
+							<div class="input-group-addon" id="colorcardsample" style="background-color: #ff5656;"><a href="javascript:showColorpick(this);"></a></div>
+							<input type="text" class="form-control" id="colorInput" placeholder="#000000" value="#ff5656" onchange="setColor(this.value)">
+						</div>
+					</div>
+				</li>
+				<li><p class="navbar-text">线条宽度</p></li>
+				<li>
+					<div class="navbar-form form-group item navbar-left">
+						<div class="input-group">
+							<input type="text" class="form-control" id="lineWidth" placeholder="4" value="4" onchange="setLine(this.value)">
+							<div class="input-group-addon">px</div>
+						</div>
+					</div>
+				</li>
+				<li><p class="navbar-text">字体大小</p></li>
+				<li>
+					<div class="navbar-form form-group item navbar-left">
+						<div class="input-group">
+							<input type="text" class="form-control" id="fontSize" placeholder="14" value="14" onchange="setFontSize(this.value)">
+							<div class="input-group-addon">px</div>
+						</div>
+					</div>
+				</li>
+				<li><button type="button" id="zoomoutbtn" class="btn btn-warning navbar-btn item" onclick="zoomopen()">区域放大</button></li>
+				<li>
+					<div class="navbar-form form-group item navbar-left">
+						<div class="input-group">
+							<input type="text" class="form-control" id="scale" placeholder="3" value="3" onchange="setScale(this.value)">
+							<div class="input-group-addon">X</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li><button type="button" class="btn btn-primary navbar-btn item" onclick="draw.undo()">撤销</button></li>
+				<li><button type="button" class="btn btn-danger navbar-btn item" onclick="draw.clear()">清除</button></li>
+				<li><button type="button" class="btn btn-success navbar-btn item" onclick="exportStage()">保存</button></li>
+			</ul>
+			<div class="nav navbar-nav navbar-right copyright">
+				<p>Ver 0.1 Powered by Ailtariel<br />Maps copyright - StatBanana.com</p>
+			</div>
+		</div>
+	</div>
+</nav>
+<div id="main" class="container">
+	<div class="row">
+		<div class="col-md-12" id="map" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<img class="hiddenmap" src="" style="" />
+		</div>
+	</div>
+	<div id="textDialog" style="display: none;">
+		<input type="text" class="form-control" id="text" x="0" y="0" placeholder="Input here..." value="">
+	</div>
+</div>
+<script src="js/runner.js"></script>
+</body>
+</html>

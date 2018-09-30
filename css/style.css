@@ -1,0 +1,105 @@
+.lbl{
+	font-size: 11px;
+	font-weight: 400;
+}
+#main{
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+#nav .dropdown li{
+	cursor: pointer;
+}
+#nav .item{
+	/*height: 34px;*/
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#nav button{
+	margin-left:20px;
+}
+.toolbar{
+	background-color: #336633;
+}
+.chart-title-img{
+	width: 60px;
+}
+.dropdown-menu .title{
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: 700;
+	line-height: 1.42857143;
+	background-color: #337ab7;
+	color: #fff;
+	text-align: center;
+	cursor: default;
+}
+.dropdown-menu .selected{
+    background-color: #8cc152;
+	color: #fff;
+	cursor: default;
+}
+#heroes img{
+	border: 2px dotted #ddd; 
+	border-radius:50%;
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+	cursor: 
+}
+#map{
+	background-repeat: no-repeat;
+	background-position: top center;
+	position: relative;
+}
+#map .hiddenmap{
+	opacity: 0;
+	position: relative;
+}
+.drag{
+	cursor: pointer;
+}
+.lock{
+	-webkit-filter: grayscale(100%); 
+	-moz-filter: grayscale(100%); 
+	-ms-filter: grayscale(100%); 
+	-o-filter: grayscale(100%); 
+	filter: grayscale(100%); 
+	filter: gray; 
+	cursor: default;
+}
+.colorcard{
+	height: 16px;
+	width: 16px;
+	margin-top: 5px;
+	display: inline-block;
+}
+#colorpick .colorcard{
+	margin-right: 15px;	
+}
+#colorInput{
+	width: 100px;
+}
+#colorcardsample{
+	padding: 0;
+}
+#colorcardsample a{
+	/*cursor: pointer;*/
+	width: 30px;
+	height: 30px;
+	display: block;
+}
+#lineWidth, #fontSize, #scale{
+	width: 50px;
+}
+#textDialog{
+	position: absolute;
+}
+.copyright{
+	text-align: right;
+	color: #bbb;
+	padding-right: 50px;
+	font-size: 12px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+}
