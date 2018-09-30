@@ -3,6 +3,10 @@
 <h3>version： 0.1</h3>
 <p>简介：本工具用作Overwatch的简单地图沙盘演示。</p>
 
+
+<h3>使用说明：</h3>
+<p>在本地解压后用浏览器打开sandbox.html即可，不需要web环境。建议使用新版Firefox/Chrome等能良好支持HTML5 Canvas的浏览器。</p>
+
 <h4>地图：</h4>
 <ul>
 <li>1、可选择当前版本所有地图。</li>
