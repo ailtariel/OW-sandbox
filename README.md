@@ -7,6 +7,7 @@
 <ul>
 <li>1、可选择当前版本所有地图。</li>
 <li>2、使用高清模式，可以在放大后获得更高清晰度的局部地图。</li>
+<li>3、github版本未附带高清资源包。请访问 <a href="https://pan.baidu.com/s/1xHyNEXuL92McUDnP08P5hw" target="_blank">百度网盘</a>下载。提取码： xlpb</li>
 </ul>
 
 <h4>英雄：</h4>
@@ -41,7 +42,7 @@
 <li>3、可以将当前绘制另存为图片。</li>
 </ul>
 
-<h4>版权声明：
+<h4>版权声明：</h4>
 <ul>
 <li>1、所有英雄、地图版权归属于暴雪游戏Overwatch http://playoverwatch.com</li>
 <li>2、地图图片素材来源于http://StatBanana.com</li>
